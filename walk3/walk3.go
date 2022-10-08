@@ -94,7 +94,7 @@ func searchTree(dir string, pairs chan<- pair, wg *sync.WaitGroup, limits chan b
 func run(dir string) results {
 	workers := 2 * runtime.GOMAXPROCS(0)
 	limits := make(chan bool, workers)
-	pairs := make(chan pair)
+	pairs := make(chan pair, workers)
 	result := make(chan results)
 	wg := new(sync.WaitGroup)
 
